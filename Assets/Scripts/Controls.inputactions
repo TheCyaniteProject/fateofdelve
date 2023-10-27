@@ -24,6 +24,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Confirm",
+                    "type": "Button",
+                    "id": "ef164070-e92d-45f7-a380-e0bc1543a06a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "View",
                     "type": "Button",
                     "id": "51d0ee3c-841f-418c-a411-7896ac8b5293",
@@ -60,18 +69,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Confirm",
+                    "name": "Info",
                     "type": "Button",
-                    "id": "ef164070-e92d-45f7-a380-e0bc1543a06a",
+                    "id": "d29895b2-d996-4951-aa08-52a3cfa767ff",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Info",
+                    "name": "Skip",
                     "type": "Button",
-                    "id": "d29895b2-d996-4951-aa08-52a3cfa767ff",
+                    "id": "7df2fd27-b7b4-4dc2-81ab-8ddf68338985",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -102,9 +111,31 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "up",
+                    "id": "1cf0f657-d570-4ac1-bcb2-c04474589e10",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Arrow Keys",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "down",
                     "id": "1da95596-6086-43f0-97f6-e8b97cb2ef3e",
                     "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Arrow Keys",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "a73b3523-123f-4992-b710-3bdf4d2c91c7",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "Arrow Keys",
@@ -124,9 +155,31 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "left",
+                    "id": "8fdfbfa1-dd92-4b1e-957c-82ea406ec605",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Arrow Keys",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "right",
                     "id": "26598f51-b05b-44ac-a399-0f7d8a2ce826",
                     "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Arrow Keys",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "ea4fd112-48d3-4b5c-a303-ee06596ebd62",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "Arrow Keys",
@@ -148,7 +201,7 @@
                 {
                     "name": "",
                     "id": "a1955c5a-ce60-498b-9804-fa3d911169fb",
-                    "path": "<Keyboard>/v",
+                    "path": "<Keyboard>/l",
                     "interactions": "",
                     "processors": "",
                     "groups": "Arrow Keys",
@@ -159,7 +212,7 @@
                 {
                     "name": "",
                     "id": "bbf969b0-0ea3-4128-b01a-5486cb266e9c",
-                    "path": "<Keyboard>/g",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "Arrow Keys",
@@ -170,7 +223,7 @@
                 {
                     "name": "",
                     "id": "f09310d6-92b2-45ba-87b7-c22d3ce153a7",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "Arrow Keys",
@@ -191,6 +244,17 @@
                 },
                 {
                     "name": "",
+                    "id": "9b3500bc-69fc-4e09-b1c2-c30ec2583481",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Arrow Keys",
+                    "action": "Info",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "42535d0d-0002-47cc-9f42-27e634a7031f",
                     "path": "<Keyboard>/enter",
                     "interactions": "",
@@ -202,12 +266,12 @@
                 },
                 {
                     "name": "",
-                    "id": "9b3500bc-69fc-4e09-b1c2-c30ec2583481",
-                    "path": "<Keyboard>/c",
+                    "id": "715f7bb5-34f1-4adf-9b1f-b6f7153a3c8f",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Arrow Keys",
-                    "action": "Info",
+                    "action": "Skip",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

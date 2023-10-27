@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: downStairs
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 892721010, guid: d5e9a53ff63e1d04bbc1df4c7c3666be, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: -930309948, guid: e85dd41fd88750e4686f68a5c41a7990, type: 3}
+  m_Color: {r: 0.25882354, g: 0.35686275, b: 0.31764707, a: 1}
   m_Transform:
     e00: 1
     e01: 0

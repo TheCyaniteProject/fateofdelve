@@ -30,13 +30,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4045285357597916935}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5596009288642769278
 SpriteRenderer:
@@ -79,8 +79,8 @@ SpriteRenderer:
   m_SortingLayerID: 1161121641
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: -1076480580, guid: d5e9a53ff63e1d04bbc1df4c7c3666be, type: 3}
-  m_Color: {r: 0.24705882, g: 0.49803922, b: 0.24705882, a: 1}
+  m_Sprite: {fileID: -211093386, guid: c70df2a389851d94ab03babf6e70ecbc, type: 3}
+  m_Color: {r: 0.38431373, g: 0.6745098, b: 0.34117648, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
     <MaxHp>k__BackingField: 10
     <Hp>k__BackingField: 10
     <BaseDefense>k__BackingField: 1
-    <BasePower>k__BackingField: 3
+    <BasePower>k__BackingField: 2
   <Target>k__BackingField: {fileID: 0}
 --- !u!114 &2435539870580237300
 MonoBehaviour:
@@ -142,7 +142,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e7129c6056a2d347bfe85754f0409c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aStar: {fileID: 3125749561450854138}
+  <State>k__BackingField:
+    <Type>k__BackingField: HostileEnemy
+    <PreviousAI>k__BackingField: 
+    <TurnsRemaining>k__BackingField: 0
+  <AStar>k__BackingField: {fileID: 3125749561450854138}
   fighter: {fileID: 7760322755128577293}
   isFighting: 0
 --- !u!114 &3125749561450854138
@@ -189,5 +193,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9752b102a4375c4e9d037ff7f5e0f56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapon: {fileID: 0}
-  armor: {fileID: 0}
+  <Weapon>k__BackingField: {fileID: 0}
+  <Armor>k__BackingField: {fileID: 0}

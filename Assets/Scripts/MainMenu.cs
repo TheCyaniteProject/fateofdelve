@@ -5,42 +5,44 @@ using UnityEngine.EventSystems;
 
 namespace TheSleepyKoala
 {
-  public class MainMenu : MonoBehaviour
-  {
-    [SerializeField] private EventSystem eventSystem;
-    [SerializeField] private Button continueButton;
-
-    private void Start()
+    public class MainMenu : MonoBehaviour
     {
-      if (!SaveManager.instance.HasSaveAvailable())
-      {
-        continueButton.interactable = false;
-      }
-      else
-      {
-        eventSystem.SetSelectedGameObject(continueButton.gameObject);
-      }
-    }
+        [SerializeField] private EventSystem eventSystem;
+        [SerializeField] private Button continueButton;
 
-    public void NewGame()
-    {
-      if (SaveManager.instance.HasSaveAvailable())
-      {
-        SaveManager.instance.DeleteSave();
-      }
+        private void Start()
+        {
+            Application.targetFrameRate = 60;
 
-      SaveManager.instance.CurrentFloor = 1;
-      SceneManager.LoadScene("Dungeon");
-    }
+            if (!SaveManager.instance.HasSaveAvailable())
+            {
+                continueButton.interactable = false;
+            }
+            else
+            {
+                eventSystem.SetSelectedGameObject(continueButton.gameObject);
+            }
+        }
 
-    public void ContinueGame()
-    {
-      SaveManager.instance.LoadGame();
-    }
+        public void NewGame()
+        {
+            if (SaveManager.instance.HasSaveAvailable())
+            {
+                SaveManager.instance.DeleteSave();
+            }
 
-    public void QuitGame()
-    {
-      Application.Quit();
+            SaveManager.instance.CurrentFloor = 1;
+            SceneManager.LoadScene("Dungeon");
+        }
+
+        public void ContinueGame()
+        {
+            SaveManager.instance.LoadGame();
+        }
+
+        public void QuitGame()
+        {
+            Application.Quit();
+        }
     }
-  }
 }

@@ -2,145 +2,152 @@ using UnityEngine;
 
 namespace TheSleepyKoala.Entities
 {
-  [RequireComponent(typeof(Actor))]
-  public class Fighter : MonoBehaviour
-  {
-    [field: SerializeField] public FighterState State { get; set; }
-    [field: SerializeField] public Actor Target { get; set; }
-
-    public int Hp
+    [RequireComponent(typeof(Actor))]
+    public class Fighter : MonoBehaviour
     {
-      get => State.Hp; set
-      {
-        State.Hp = Mathf.Max(0, Mathf.Min(value, State.MaxHp));
+        [field: SerializeField] public FighterState State { get; set; }
+        [field: SerializeField] public Actor Target { get; set; }
 
-        if (GetComponent<Player>())
+        public int Hp
         {
-          UIManager.instance.SetHealth(State.Hp, State.MaxHp);
+            get => State.Hp; set
+            {
+                State.Hp = Mathf.Max(0, Mathf.Min(value, State.MaxHp));
+
+                if (GetComponent<Player>())
+                {
+                    UIManager.instance.SetHealth(State.Hp, State.MaxHp);
+                }
+
+                if (State.Hp == 0)
+                    Die();
+            }
         }
 
-        if (State.Hp == 0)
-          Die();
-      }
-    }
-
-    public int MaxHp
-    {
-      get => State.MaxHp; set
-      {
-        State.MaxHp = value;
-        if (GetComponent<Player>())
+        public int MaxHp
         {
-          UIManager.instance.SetHealthMax(State.MaxHp);
+            get => State.MaxHp; set
+            {
+                State.MaxHp = value;
+                if (GetComponent<Player>())
+                {
+                    UIManager.instance.SetHealthMax(State.MaxHp);
+                }
+            }
         }
-      }
-    }
 
-    public int Power() => State.BasePower + PowerBonus();
+        public int Power() => State.BasePower + PowerBonus();
 
-    public int Defense() => State.BaseDefense + DefenseBonus();
+        public int Defense() => State.BaseDefense + DefenseBonus();
 
-    public int DefenseBonus()
-    {
-      if (GetComponent<Equipment>() is not null)
-      {
-        return GetComponent<Equipment>().DefenseBonus();
-      }
-
-      return 0;
-    }
-
-    public int PowerBonus()
-    {
-      if (GetComponent<Equipment>() is not null)
-      {
-        return GetComponent<Equipment>().PowerBonus();
-      }
-
-      return 0;
-    }
-
-    private void Start()
-    {
-      if (GetComponent<Player>())
-      {
-        UIManager.instance.SetHealthMax(State.MaxHp);
-        UIManager.instance.SetHealth(State.Hp, State.MaxHp);
-      }
-    }
-
-
-    public void Die()
-    {
-      if (GetComponent<Actor>().IsAlive)
-      {
-        if (GetComponent<Player>())
+        public int DefenseBonus()
         {
-          UIManager.instance.AddMessage("You died!", "#ff0000"); //Red
+            if (GetComponent<Equipment>() is not null)
+            {
+                return GetComponent<Equipment>().DefenseBonus();
+            }
+
+            return 0;
         }
-        else
+
+        public int PowerBonus()
         {
-          GameManager.instance.Actors[0].Level.State.AddExperience(GetComponent<Level>().XpGiven); //Give XP to player
-          UIManager.instance.AddMessage($"{name} is dead!", "#ffa500"); //Light Orange
+            if (GetComponent<Equipment>() is not null)
+            {
+                return GetComponent<Equipment>().PowerBonus();
+            }
+
+            return 0;
         }
-        GetComponent<Actor>().IsAlive = false;
-      }
 
-      SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-      spriteRenderer.sprite = GameManager.instance.DeadSprite;
-      spriteRenderer.color = new Color(191, 0, 0, 1);
-      spriteRenderer.sortingOrder = 0;
+        private void Start()
+        {
+            if (GetComponent<Player>())
+            {
+                UIManager.instance.SetHealthMax(State.MaxHp);
+                UIManager.instance.SetHealth(State.Hp, State.MaxHp);
+            }
+        }
 
-      name = $"Remains of {name}";
-      GetComponent<Actor>().BlocksMovement = false;
-      if (!GetComponent<Player>())
-      {
-        GameManager.instance.RemoveActor(this.GetComponent<Actor>());
-      }
+
+        public void Die()
+        {
+            if (GetComponent<Actor>().IsAlive)
+            {
+                if (GetComponent<Player>())
+                {
+                    UIManager.instance.AddMessage("You died!", "#ff0000"); //Red
+                }
+                else
+                {
+                    GameManager.instance.Actors[0].Level.State.AddExperience(GetComponent<Level>().XpGiven); //Give XP to player
+                    UIManager.instance.AddMessage($"{name} is dead!", "#ffa500"); //Light Orange
+
+                    if (Random.Range(0, 101) < 20)
+                    {
+                        string[] remarks = new string[] { "New highscore?", "Oh well.", "I was starting to like that one..", "WHY??", "Leave us alone!", "I never liked that one anyways.", "MORE BLOOD MORE BLOOD MORE BLOOD!", "my friends keep going away.." };
+
+                        UIManager.instance.AddMessage("Dungeon: " + remarks[Random.Range(0, remarks.Length)], "#0da2ff"); //Light blue
+                    }
+                }
+                GetComponent<Actor>().IsAlive = false;
+            }
+
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = GameManager.instance.DeadSprite;
+            spriteRenderer.color = GameManager.instance.DeadColor;
+            spriteRenderer.sortingOrder = 0;
+
+            name = $"Remains of {name}";
+            GetComponent<Actor>().BlocksMovement = false;
+            if (!GetComponent<Player>())
+            {
+                GameManager.instance.RemoveActor(this.GetComponent<Actor>());
+            }
+        }
+
+        public int Heal(int amount)
+        {
+            if (State.Hp == State.MaxHp)
+            {
+                return 0;
+            }
+
+            int newHPValue = State.Hp + amount;
+
+            if (newHPValue > State.MaxHp)
+            {
+                newHPValue = State.MaxHp;
+            }
+
+            int amountRecovered = newHPValue - State.Hp;
+            Hp = newHPValue;
+            return amountRecovered;
+        }
     }
 
-    public int Heal(int amount)
+    [System.Serializable]
+    public class FighterState
     {
-      if (State.Hp == State.MaxHp)
-      {
-        return 0;
-      }
+        [field: SerializeField] public int MaxHp { get; set; }
+        [field: SerializeField] public int Hp { get; set; }
+        [field: SerializeField] public int BaseDefense { get; set; }
+        [field: SerializeField] public int BasePower { get; set; }
 
-      int newHPValue = State.Hp + amount;
+        public FighterState(int maxHp, int hp, int defense, int power)
+        {
+            this.MaxHp = maxHp;
+            this.Hp = hp;
+            this.BaseDefense = defense;
+            this.BasePower = power;
+        }
 
-      if (newHPValue > State.MaxHp)
-      {
-        newHPValue = State.MaxHp;
-      }
-
-      int amountRecovered = newHPValue - State.Hp;
-      Hp = newHPValue;
-      return amountRecovered;
+        public void Load(FighterState savedState)
+        {
+            MaxHp = savedState.MaxHp;
+            Hp = savedState.Hp;
+            BaseDefense = savedState.BaseDefense;
+            BasePower = savedState.BasePower;
+        }
     }
-  }
-
-  [System.Serializable]
-  public class FighterState
-  {
-    [field: SerializeField] public int MaxHp { get; set; }
-    [field: SerializeField] public int Hp { get; set; }
-    [field: SerializeField] public int BaseDefense { get; set; }
-    [field: SerializeField] public int BasePower { get; set; }
-
-    public FighterState(int maxHp, int hp, int defense, int power)
-    {
-      this.MaxHp = maxHp;
-      this.Hp = hp;
-      this.BaseDefense = defense;
-      this.BasePower = power;
-    }
-
-    public void Load(FighterState savedState)
-    {
-      MaxHp = savedState.MaxHp;
-      Hp = savedState.Hp;
-      BaseDefense = savedState.BaseDefense;
-      BasePower = savedState.BasePower;
-    }
-  }
 }

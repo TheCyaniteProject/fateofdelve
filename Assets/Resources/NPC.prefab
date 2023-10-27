@@ -28,13 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4045285357597916935}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5596009288642769278
 SpriteRenderer:
@@ -77,9 +77,9 @@ SpriteRenderer:
   m_SortingLayerID: 1161121641
   m_SortingLayer: 1
   m_SortingOrder: 2
-  m_Sprite: {fileID: 2063746809, guid: d5e9a53ff63e1d04bbc1df4c7c3666be, type: 3}
+  m_Sprite: {fileID: 1179563862, guid: e94593287c91d9c4cab66274793f503b, type: 3}
   m_Color: {r: 0.9304826, g: 1, b: 0, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -102,14 +102,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <BlocksMovement>k__BackingField: 0
   <SpriteRenderer>k__BackingField: {fileID: 5596009288642769278}
-  <isAlive>k__BackingField: 1
+  <IsAlive>k__BackingField: 1
   fieldOfViewRange: 8
-  <fieldOfView>k__BackingField: []
-  <inventory>k__BackingField: {fileID: 0}
-  <equipment>k__BackingField: {fileID: 0}
-  <aI>k__BackingField: {fileID: 9068088526719773172}
-  <fighter>k__BackingField: {fileID: 0}
-  <level>k__BackingField: {fileID: 3503943130817339647}
+  <FieldOfView>k__BackingField: []
+  <Inventory>k__BackingField: {fileID: 0}
+  <Equipment>k__BackingField: {fileID: 0}
+  <AI>k__BackingField: {fileID: 9068088526719773172}
+  <Fighter>k__BackingField: {fileID: 0}
+  <Level>k__BackingField: {fileID: 3503943130817339647}
 --- !u!114 &9068088526719773172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +122,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c82c95b3dd0ca94dae58c83486298a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aStar: {fileID: 3125749561450854138}
+  <State>k__BackingField:
+    <Type>k__BackingField: 
+    <PreviousAI>k__BackingField: 
+    <TurnsRemaining>k__BackingField: 0
+  <AStar>k__BackingField: {fileID: 3125749561450854138}
 --- !u!114 &3125749561450854138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,9 +151,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11d70f02dea0075458dd292c1f43eb24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: 1
-  currentXp: 0
-  xpToNextLevel: 350
-  levelUpBase: 200
-  levelUpFactor: 150
-  xpGiven: 0
+  <State>k__BackingField:
+    levelUpBase: 200
+    levelUpFactor: 150
+    <CurrentLevel>k__BackingField: 1
+    <CurrentXp>k__BackingField: 0
+    <XpToNextLevel>k__BackingField: 350
+    <LevelPoints>k__BackingField: 0
+  <XpGiven>k__BackingField: 0
