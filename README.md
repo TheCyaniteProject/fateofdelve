@@ -17,6 +17,16 @@ Fate of Delve is a modern-traditional roguelike/town management game. After rece
 ![image](https://github.com/TheCyaniteProject/fateofdelve/assets/26806429/89d36e5e-5984-48b6-b271-34f0547ed6bf)
 ![image](https://github.com/TheCyaniteProject/fateofdelve/assets/26806429/66a6be1c-d705-47f2-ae25-b2d5d53c63fd)
 
+### Controls
+- Up/Down/Right/Left arrows or WASD to move
+- Q to drop an item
+- F to pick up an item
+- I to open inventory
+- C to open character sheet
+- L to open Log
+- Enter to confirm selection
+- Space to skip turn
+
 ## Attribution
 
 - I'm using https://github.com/Chizaruu/2D-Roguelike-Kit as a base for this project, and recomend you do aswell if you want to make a roguelike in Unity without having to start from scratch. Additionally, you can also use this project as a starting point if you like.
