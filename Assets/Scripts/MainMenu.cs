@@ -14,13 +14,16 @@ namespace TheSleepyKoala
         {
             Application.targetFrameRate = 60;
 
-            if (!SaveManager.instance.HasSaveAvailable())
+            if (continueButton != null)
             {
-                continueButton.interactable = false;
-            }
-            else
-            {
-                eventSystem.SetSelectedGameObject(continueButton.gameObject);
+                if (!SaveManager.instance.HasSaveAvailable())
+                {
+                    continueButton.interactable = false;
+                }
+                else
+                {
+                    eventSystem.SetSelectedGameObject(continueButton.gameObject);
+                }
             }
         }
 
@@ -38,6 +41,11 @@ namespace TheSleepyKoala
         public void ContinueGame()
         {
             SaveManager.instance.LoadGame();
+        }
+
+        public void QuitToMenu()
+        {
+            SceneManager.LoadScene("Main Menu");
         }
 
         public void QuitGame()

@@ -49,12 +49,17 @@ namespace TheSleepyKoala
         [SerializeField] private GameObject levelUpMenu;
         [SerializeField] private GameObject levelUpMenuContent;
 
+        [Header("Death Menu UI")]
+        [SerializeField] private bool isDeathMenuOpen = false; //Read-only
+        [SerializeField] private GameObject deathMenu;
+
         public bool IsMenuOpen { get => isMenuOpen; }
         public bool IsMessageHistoryOpen { get => isMessageHistoryOpen; }
         public bool IsInventoryOpen { get => isInventoryOpen; }
         public bool IsDropMenuOpen { get => isDropMenuOpen; }
         public bool IsEscapeMenuOpen { get => isEscapeMenuOpen; }
         public bool IsCharacterInformationMenuOpen { get => isCharacterInformationMenuOpen; }
+        public bool IsDeathMenuOpen { get => isDeathMenuOpen; }
 
         private void Awake()
         {
@@ -83,7 +88,7 @@ namespace TheSleepyKoala
                 "why do they always leave me..",
                 "Have you come to play?",
                 "Welcome! My other toys stopped working...",
-                "Youuu can't get me! HAHAHAHA",
+                "Youu can't get me!",
                 "You look funny.",
                 "Blood for the blood god!",
                 "So soon?",
@@ -91,7 +96,7 @@ namespace TheSleepyKoala
        
             if (SaveManager.instance.Save.SavedFloor is 0)
             {
-                AddMessage("Dungeon: " + entranceLines[0], "#0da2ff"); //Light blue
+                AddMessage("Dungeon: " + entranceLines[Random.Range(0, entranceLines.Length)], "#0da2ff"); //Light blue
             }
             else
             {
@@ -142,6 +147,12 @@ namespace TheSleepyKoala
                         break;
                 }
             }
+        }
+
+        public void ToggleDeathMenu()
+        {
+            isDeathMenuOpen = !isDeathMenuOpen;
+            SetBooleans(deathMenu, isDeathMenuOpen);
         }
 
         public void ToggleMessageHistory()

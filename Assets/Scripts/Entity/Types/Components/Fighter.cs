@@ -77,6 +77,7 @@ namespace TheSleepyKoala.Entities
                 if (GetComponent<Player>())
                 {
                     UIManager.instance.AddMessage("You died!", "#ff0000"); //Red
+                    UIManager.instance.ToggleDeathMenu();
                 }
                 else
                 {
